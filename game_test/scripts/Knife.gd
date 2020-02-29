@@ -69,15 +69,15 @@ func stick_in_wall(collision_info):
 func stick_in_enemy(enemy):
 	state = STABBED_IN_ENEMY
 	
-	# store stabbed enemy
-	stabbed_enemy = enemy
-	velocity = Vector2()
-	
 	# change sprite
 	$AnimatedSprite.play("stuck_in_wall")
 	$AnimatedSprite.set_flip_h(false)
 	$AnimatedSprite.set_rotation(PI)
 	$AnimatedSprite.rotate(velocity.angle())
+	
+	# store stabbed enemy
+	stabbed_enemy = enemy
+	velocity = Vector2() # must be after sprite changes
 
 func _on_Area2D_area_entered(area):
 	if state == FLYING:
