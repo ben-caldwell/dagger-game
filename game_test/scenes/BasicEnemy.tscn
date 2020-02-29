@@ -17,7 +17,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 31.9438, 32.0928 )
 
-[node name="Node2D" type="KinematicBody2D"]
+[node name="BasicEnemy" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource( 1 )
@@ -26,27 +26,32 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 
 [node name="DetectFloorLeft" type="RayCast2D" parent="."]
+visible = false
 position = Vector2( -32, 0 )
 enabled = true
 collision_mask = 8
 
 [node name="DetectFloorRight" type="RayCast2D" parent="."]
+visible = false
 position = Vector2( 32, 0 )
 enabled = true
 collision_mask = 8
 
 [node name="DetectWallRight" type="RayCast2D" parent="."]
+visible = false
 rotation = 4.71239
 enabled = true
 collision_mask = 8
 
 [node name="DetectWallLeft" type="RayCast2D" parent="."]
+visible = false
 rotation = 1.5708
 enabled = true
 collision_mask = 8

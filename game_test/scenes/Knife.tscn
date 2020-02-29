@@ -6,13 +6,13 @@
 [ext_resource path="res://sprites/knife/stuck_in_wall/sprite_2.png" type="Texture" id=4]
 [ext_resource path="res://sprites/knife/stuck_in_wall/sprite_3.png" type="Texture" id=5]
 [ext_resource path="res://sprites/knife/stuck_in_wall/sprite_4.png" type="Texture" id=6]
-[ext_resource path="res://sprites/knife/spinning/sprite_dagger6.png" type="Texture" id=7]
-[ext_resource path="res://sprites/knife/spinning/sprite_dagger0.png" type="Texture" id=8]
-[ext_resource path="res://sprites/knife/spinning/sprite_dagger1.png" type="Texture" id=9]
-[ext_resource path="res://sprites/knife/spinning/sprite_dagger2.png" type="Texture" id=10]
-[ext_resource path="res://sprites/knife/spinning/sprite_dagger3.png" type="Texture" id=11]
-[ext_resource path="res://sprites/knife/spinning/sprite_dagger4.png" type="Texture" id=12]
-[ext_resource path="res://sprites/knife/spinning/sprite_dagger5.png" type="Texture" id=13]
+[ext_resource path="res://sprites/knife/spinning/sprite_dagger0.png" type="Texture" id=7]
+[ext_resource path="res://sprites/knife/spinning/sprite_dagger1.png" type="Texture" id=8]
+[ext_resource path="res://sprites/knife/spinning/sprite_dagger2.png" type="Texture" id=9]
+[ext_resource path="res://sprites/knife/spinning/sprite_dagger3.png" type="Texture" id=10]
+[ext_resource path="res://sprites/knife/spinning/sprite_dagger4.png" type="Texture" id=11]
+[ext_resource path="res://sprites/knife/spinning/sprite_dagger5.png" type="Texture" id=12]
+[ext_resource path="res://sprites/knife/spinning/sprite_dagger6.png" type="Texture" id=13]
 [ext_resource path="res://sprites/knife/spinning/sprite_dagger7.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -22,19 +22,20 @@ animations = [ {
 "name": "stuck_in_wall",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "single_spin",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "spinning",
 "speed": 24.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "single_spin",
+"speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 4.12179
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 1.0042
+height = 5.50318
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 7.07746
@@ -50,7 +51,8 @@ frames = SubResource( 1 )
 animation = "single_spin"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+rotation = 1.5708
+shape = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

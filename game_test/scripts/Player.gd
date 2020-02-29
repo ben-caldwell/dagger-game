@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MAX_THROW_CHARGES = 1
+const MAX_THROW_CHARGES = 3
 
 var throw_charges = MAX_THROW_CHARGES
 var has_knife

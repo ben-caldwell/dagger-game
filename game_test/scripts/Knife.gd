@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const INIT_SPEED = 1000
 const RESISTANCE = 0.000005
-var ROTATION_SPEED = 30 # not const on purpose
+var ROTATION_SPEED = 20 # not const on purpose
 
 # states
 const FLYING = 0
@@ -17,7 +17,7 @@ var velocity
 func _ready():
 	$AnimatedSprite.play("spinning")
 	# for sprite rotation
-#	$AnimatedSprite.play("single_spin")
+	$AnimatedSprite.play("single_spin")
 	
 	# throw the knife towards the mouse
 	velocity = get_viewport().get_mouse_position() - position
@@ -35,8 +35,9 @@ func _process(delta):
 		position = stabbed_enemy.get_position()
 	
 	# for sprite rotation instead of animation
-#	if state == FLYING:
-#		$AnimatedSprite.rotate(ROTATION_SPEED * delta)
+	if state == FLYING:
+		$AnimatedSprite.rotate(ROTATION_SPEED * delta)
+		$CollisionShape2D.rotate(ROTATION_SPEED * delta)
 
 func _physics_process(delta):
 	if state == FLYING:
