@@ -20,7 +20,7 @@ func _ready():
 	$AnimatedSprite.play("single_spin")
 	
 	# throw the knife towards the mouse
-	velocity = get_viewport().get_mouse_position() - position
+	velocity = get_global_mouse_position() - position
 	velocity = velocity.normalized() * INIT_SPEED
 	
 	# spin in the correct direction
