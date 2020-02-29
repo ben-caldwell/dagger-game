@@ -67,6 +67,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 8
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -78,7 +79,7 @@ frames = SubResource( 2 )
 animation = "no_knife"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 29.2903
-margin_top = -32.2944
-margin_right = 69.2903
-margin_bottom = -18.2944
+margin_left = 22.7813
+margin_top = -35.0482
+margin_right = 62.7813
+margin_bottom = -21.0482

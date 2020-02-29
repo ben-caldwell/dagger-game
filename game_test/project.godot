@@ -16,11 +16,20 @@ _global_script_class_icons={
 [application]
 
 config/name="game_test"
+run/main_scene="res://scenes/TestLevel.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://scenes/Global.tscn"
+
+[layer_names]
+
+2d_render/layer_1="Player"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Knife"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Wall"
 
 [rendering]
 

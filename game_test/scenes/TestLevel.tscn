@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/BasicEnemy.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 514.221, 353.697 )
+position = Vector2( 530, 250 )
 
 [node name="Node2D" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Wall" parent="Node2D" instance=ExtResource( 2 )]
 
@@ -92,3 +94,15 @@ position = Vector2( 900, 0 )
 
 [node name="Wall17" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( 1020, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 640, 370 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 850, 130 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 130 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 410, 380 )

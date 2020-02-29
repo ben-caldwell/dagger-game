@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/BasicEnemy.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.1375, 31.8982 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 31.9438, 32.0928 )
+
+[node name="Node2D" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+
+[node name="DetectFloorLeft" type="RayCast2D" parent="."]
+position = Vector2( -32, 0 )
+enabled = true
+collision_mask = 8
+
+[node name="DetectFloorRight" type="RayCast2D" parent="."]
+position = Vector2( 32, 0 )
+enabled = true
+collision_mask = 8
+
+[node name="DetectWallRight" type="RayCast2D" parent="."]
+rotation = 4.71239
+enabled = true
+collision_mask = 8
+
+[node name="DetectWallLeft" type="RayCast2D" parent="."]
+rotation = 1.5708
+enabled = true
+collision_mask = 8
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
