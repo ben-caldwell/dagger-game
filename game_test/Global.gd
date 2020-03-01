@@ -1,4 +1,7 @@
 extends Node2D
 
-var GRAVITY = 1000
-var RESISTANCE
+export var GRAVITY = 1200
+export var RESISTANCE_FACTOR = 5
+var RESISTANCE = RESISTANCE_FACTOR / 10000
+export var KNIFE_SPEED = 1200
+export var KNIFE_ROTATION = 20

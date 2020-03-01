@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-const INIT_SPEED = 1000
-const RESISTANCE = 0.000005
-var ROTATION_SPEED = 20 # not const on purpose
-
 # states
 const FLYING = 0
 const STUCK_IN_WALL = 1
@@ -12,6 +8,7 @@ const STABBED_IN_ENEMY = 2
 var state = FLYING
 var stabbed_enemy
 var velocity
+var dir = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,14 +18,14 @@ func _ready():
 	
 	# throw the knife towards the mouse
 	velocity = get_global_mouse_position() - position
-	velocity = velocity.normalized() * INIT_SPEED
+	velocity = velocity.normalized() * Global.KNIFE_SPEED
 	
 	# spin in the correct direction
 	$AnimatedSprite.set_flip_h(velocity.x > 0)
 	
 	# for sprite rotation, can leave uncommented
 	if velocity.x < 0:
-		ROTATION_SPEED *= -1
+		dir = -1
 
 func _process(delta):
 	if state == STABBED_IN_ENEMY:
@@ -36,15 +33,15 @@ func _process(delta):
 	
 	# for sprite rotation instead of animation
 	if state == FLYING:
-		$AnimatedSprite.rotate(ROTATION_SPEED * delta)
-		$CollisionShape2D.rotate(ROTATION_SPEED * delta)
+		$AnimatedSprite.rotate(Global.KNIFE_ROTATION * dir * delta)
+		$CollisionShape2D.rotate(Global.KNIFE_ROTATION * dir * delta)
 
 func _physics_process(delta):
 	if state == FLYING:
 		# gravity
 		velocity.y += delta * Global.GRAVITY
 		# air resistence
-		velocity -= RESISTANCE * velocity.length() * velocity.length() * velocity.normalized()
+		velocity -= Global.RESISTANCE * velocity.length() * velocity.length() * velocity.normalized()
 		
 		var collision_info = move_and_collide(velocity * delta)
 		if collision_info:

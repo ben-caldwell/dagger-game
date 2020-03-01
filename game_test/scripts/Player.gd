@@ -24,11 +24,14 @@ func _input(event):
 
 func _process(delta):
 	# face the mouse
-	var direction = get_viewport().get_mouse_position() - position
+	var direction = get_global_mouse_position() - position
 	$AnimatedSprite.flip_h = direction.x > 0
 	
 	# display throw charges
 	$Label.text = str(throw_charges)
+	
+#	var screen_height = get_viewport_rect().size.y
+#	$Camera2D.position.y = -(floor(position.y / screen_height) * screen_height)
 
 func _physics_process(delta):
 	# gravity
