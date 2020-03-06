@@ -63,6 +63,8 @@ func stick_in_wall(collision_info):
 	# uncomment for collison at velocity angle instead of straight out
 #	$AnimatedSprite.rotate(velocity.angle())
 
+	$AudioStreamPlayer2D.play()
+
 # Called when the knife hits an enemy
 func stick_in_enemy(enemy):
 	state = STABBED_IN_ENEMY

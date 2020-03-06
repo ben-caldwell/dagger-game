@@ -53,6 +53,8 @@ func throw_knife():
 	throw_charges -= 1
 	$AnimatedSprite.play("no_knife")
 	
+	$AudioStreamPlayer2D.play()
+	
 func teleport_to_knife():
 	# regain charges if knife is on wall or player
 	if knife and knife.state != knife.FLYING:
